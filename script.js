@@ -1,10 +1,10 @@
-const GAME_SPEED = 50;
+let  GAME_SPEED = 100;
     const CANVAS_BORDER_COLOUR = 'black';
-    const CANVAS_BACKGROUND_COLOUR = "white";
-    const SNAKE_COLOUR = 'lightgreen';
-    const SNAKE_BORDER_COLOUR = 'darkgreen';
-    const FOOD_COLOUR = 'red';
-    const FOOD_BORDER_COLOUR = 'darkred';
+    const CANVAS_BACKGROUND_COLOUR = "lightgreen";
+    const SNAKE_COLOUR = 'lightblue';
+    const SNAKE_BORDER_COLOUR = 'darkblue';
+    const FOOD_COLOUR = 'orange';
+    const FOOD_BORDER_COLOUR = 'darkorange';
     let snake = [
       {x: 150, y: 150},
       {x: 140, y: 150},
@@ -88,6 +88,7 @@ const GAME_SPEED = 50;
       if (didEatFood) {
         // Increase score
         score += 10;
+        GAME_SPEED -= 4;
         // Display score on screen
         document.getElementById('score').innerHTML = score;
         // Generate new food location
@@ -131,7 +132,7 @@ const GAME_SPEED = 50;
       // if the new food location is where the snake currently is, generate a new food location
       snake.forEach(function isFoodOnSnake(part) {
         const foodIsoNsnake = part.x == foodX && part.y == foodY;
-        if (foodIsoNsnake) createFood();
+        if (foodIsoNsnake) {createFood() && GAME_SPEED * 0.1};
       });
     }
 
